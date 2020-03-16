@@ -1,0 +1,6 @@
+namespace: ColinCCook.Example
+solution: Example
+projects: 
+  - name: Domain
+  - name: Application
+  - name: UserInterface
