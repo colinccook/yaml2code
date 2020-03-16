@@ -14,3 +14,5 @@ mkdir $solution
 $yaml["Projects"] | ForEach-Object {
     dotnet new classlib -o "$solution/$_.name"
 }
+
+Remove-Item –path $solution –recurse
