@@ -5,14 +5,16 @@ $content = ''
 foreach ($line in $fileContent) { $content = $content + "`n" + $line }
 $yaml = ConvertFrom-YAML $content
 
-Write-Debug $yaml
+$solution = $yaml["solution"]
+$projects = $yaml["projects"]
 
-$solution = $yaml["Solution"]
+$projects
 
 mkdir $solution
 
-$yaml["Projects"] | ForEach-Object {
-    dotnet new classlib -o "$solution/$_.name"
+$projects | ForEach-Object {
+    $project = $_.name
+    dotnet new classlib -o "$solution/$project"
 }
 
 Remove-Item –path $solution –recurse
