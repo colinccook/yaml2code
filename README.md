@@ -20,16 +20,22 @@ I was wondering to what extent a .NET solution could be defined and it's creatio
 I'd really like to add -features per project, which call upon powershell scripts in a Features folder.
 
 For example, I'd like to define something like
+```
 projects:
   - name: Application
   - features:
     - commands:
-      - PurchaseOrderRaised
-      - PurchaseOrderCancelled
-      - PurchaseOrderReconcilled
+      - PurchaseOrderRaisedCommand
+      - PurchaseOrderCancelledCommand
+      - PurchaseOrderReconcilledCommand
     - queries:
-      - AllOpenPurchaseOrders
-      - MismatchedPurchaseOrders
+      - AllOpenPurchaseOrdersQuery
+      - MismatchedPurchaseOrdersQuery
+    - raises:
+      - PurchaseOrderPaidEvent
+    - listens_for:
+      - CustomerCancelledPurchaseOrderEvent
+```
 
 And have the code stub out the commands, interfaces, etc, in the correct structure.
 
