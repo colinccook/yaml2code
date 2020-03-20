@@ -8,6 +8,7 @@ Architect a .NET Solution from yaml
 - Run Import-Module powershell-yaml
 - Edit code.yaml if you wish
 - Call yaml2code.ps1
+- Open your fresh new Solution file
 
 # Why?
 I like writing little Powershell scripts on the side, and I've recently begun looking into yaml which I find quite readable.
