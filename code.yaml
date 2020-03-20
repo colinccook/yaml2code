@@ -1,6 +1,27 @@
-namespace: ColinCCook.Example
 solution: Example
 projects: 
   - name: Domain
+
+  - name: Domain.Test
+    template: nunit
+    references: 
+     - Domain
+    packages:
+     - FluentAssertions
+
   - name: Application
+    references: 
+    - Domain
+
+  - name: Application.Test
+    template: nunit
+    references: 
+    - Domain
+    - Application
+    packages:
+    - FluentAssertions
+
   - name: UserInterface
+    template: mvc
+    references: 
+     - Application
