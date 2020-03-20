@@ -23,7 +23,7 @@ For example, I'd like to define something like
 ```
 projects:
   - name: Application
-  - features:
+    features:
     - commands:
       - PurchaseOrderRaisedCommand
       - PurchaseOrderCancelledCommand
