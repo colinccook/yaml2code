@@ -25,3 +25,9 @@ projects:
     template: mvc
     references: 
      - Application
+  
+  - name: UserInterface.IntegrationTests
+    template: nunit
+    references: UserInterface
+    packages:
+    - Microsoft.AspNetCore.Mvc.Testing
