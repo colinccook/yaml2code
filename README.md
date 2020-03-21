@@ -1,5 +1,5 @@
 # yaml2code
-Architect a .NET Core Solution from yaml using PowerShell
+Generate a .NET Core Solution from yaml using PowerShell
 ![yaml2code](/yaml2code.png)
 
 # How to use
