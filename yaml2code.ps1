@@ -1,6 +1,11 @@
 # Import-Module powershell-yaml
 
-[string[]]$fileContent = Get-Content "code.yaml"
+param
+(
+  $yamlFile = "cqrs.yaml"
+)
+
+[string[]]$fileContent = Get-Content $yamlFile
 $content = ''
 foreach ($line in $fileContent) { $content = $content + "`n" + $line }
 $yaml = ConvertFrom-YAML $content
@@ -26,5 +31,10 @@ foreach ($project in $projects) {
 
     foreach ($package in $project.packages) {
         dotnet add "$solution/$projectName/$projectName.csproj" package $package
+    }
+
+    foreach ($feature in $project.features) {
+        $featureName = "Features/$($feature.keys[0]).ps1"
+        Invoke-Expression -Command $featureName
     }
 }
