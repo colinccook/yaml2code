@@ -1,0 +1,41 @@
+solution: CqrsExample
+projects: 
+  - name: Domain
+
+  - name: Domain.Test
+    template: nunit
+    references: 
+     - Domain
+    packages:
+     - FluentAssertions
+
+  - name: Application
+    references: 
+    - Domain
+    features:
+    - commands:
+      - RaisePurchaseOrder
+      - ReconcilePurchaseOrder
+      - CancelPurchaseOrder
+    - queries:
+      - GetAllOpenPurchaseOrders
+      - GetRecentlyClosedPurchaseOrders
+
+  - name: Application.Test
+    template: nunit
+    references: 
+    - Domain
+    - Application
+    packages:
+    - FluentAssertions
+
+  - name: UserInterface
+    template: mvc
+    references: 
+     - Application
+  
+  - name: UserInterface.IntegrationTests
+    template: nunit
+    references: UserInterface
+    packages:
+    - Microsoft.AspNetCore.Mvc.Testing
